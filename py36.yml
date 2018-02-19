@@ -171,6 +171,7 @@ dependencies:
 - yaml=0.1.7=intel_0
 - zeromq=4.2.2=intel_0
 - zlib=1.2.11=intel_3
+- pymc3
 - pip:
   - backports.shutil-get-terminal-size==1.0.0
   - backports.weakref==1.0.post1
@@ -189,5 +190,7 @@ dependencies:
   - mne
   - fir
   - hedfpy
+  - pyvttbl
+  - hddm
 prefix: /home/knapen/software/miniconda3/envs/py36
 
