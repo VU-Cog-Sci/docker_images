@@ -5,7 +5,7 @@
 # pull request on our GitHub repository:
 #     https://github.com/kaczmarj/neurodocker
 #
-# Timestamp: 2018-02-19 11:03:21
+# Timestamp: 2018-02-19 11:45:27
 
 FROM centos:7
 
@@ -231,6 +231,6 @@ RUN echo '{ \
     \n      "/home/neuro" \
     \n    ] \
     \n  ], \
-    \n  "generation_timestamp": "2018-02-19 11:03:21", \
+    \n  "generation_timestamp": "2018-02-19 11:45:27", \
     \n  "neurodocker_version": "0.3.2-7-g4b0f32d" \
     \n}' > /neurodocker/neurodocker_specs.json

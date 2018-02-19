@@ -182,10 +182,10 @@ dependencies:
   - jupyterlab-launcher==0.10.4
   - mkl-random==1.0.0
   - nistats==0.0.1a0
-  - popeye==0.1.0.dev0
   - prompt-toolkit==1.0.15
-  - sharedmem==0.3.5
   - tables==3.4.2
+  - sharedmem
+  - popeye
   - mne
   - fir
   - hedfpy
