@@ -6,7 +6,7 @@ docker run --rm kaczmarj/neurodocker:master \
 generate -b centos:7 -p yum \
 --user=root \
 --run 'mkdir /data && chmod 777 /data && chmod a+s /data' \
---install git gcc g++ \
+--install git gcc g++ inkscape  \
 --afni version=latest \
 --ants version=2.2.0 \
 --freesurfer version=6.0.1 license_path=license \
