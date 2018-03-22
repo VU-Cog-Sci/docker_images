@@ -132,7 +132,7 @@ RUN echo "Downloading Miniconda installer ..." \
 #-------------------------
 # Create conda environment
 #-------------------------
-COPY ["py36.yml", "/tmp/environment.yml"]
+COPY ["py_envs/py36.yml", "/tmp/environment.yml"]
 RUN conda env create -q --name neuro --file /tmp/environment.yml \
     && rm -f /tmp/environment.yml
 
