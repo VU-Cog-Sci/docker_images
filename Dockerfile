@@ -92,7 +92,7 @@ RUN yum install -y -q bc libgomp libXmu libXt tcsh perl \
     && sed -i '$isource $FREESURFER_HOME/SetUpFreeSurfer.sh' $ND_ENTRYPOINT
 ENV FREESURFER_HOME=/opt/freesurfer
 # Copy license file into image. Must be relative path within build context.
-COPY ["license", "/opt/freesurfer/license.txt"]
+COPY ["freesurfer_license.txt", "/opt/freesurfer/license.txt"]
 
 #-----------------------------------------------------------
 # Install FSL v5.0.10
