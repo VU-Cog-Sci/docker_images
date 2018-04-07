@@ -9,9 +9,9 @@ generate -b centos:7 -p yum \
 --install git gcc g++ inkscape  \
 --afni version=latest \
 --ants version=2.2.0 \
---freesurfer version=6.0.1 license_path=license \
+--freesurfer version=6.0.1 license_path=freesurfer_license.txt \
 --fsl version=5.0.10 \
---miniconda env_name=neuro yaml_file="py36.yml" \
+--miniconda env_name=neuro yaml_file="py_envs/py36.yml" \
 --run="source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout glrework-merged && python setup.py install" \
 --run="source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
 --run="echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile" \
