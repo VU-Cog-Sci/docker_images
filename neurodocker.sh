@@ -13,6 +13,7 @@ generate -b centos:7 -p yum \
 --fsl version=5.0.10 \
 --miniconda env_name=neuro yaml_file="py36.yml" \
 --run="source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout glrework-merged && python setup.py install" \
+--run="source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
 --run="echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile" \
 --user=neuro \
 --run="echo 'source activate neuro' >> /home/neuro/.bashrc" \
