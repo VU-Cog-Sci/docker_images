@@ -35,7 +35,12 @@ code_directory_container="/home/neuro/projects/MB_PRF_7T/"
 # docker run -v ${data_directory_host}:${data_directory_container} \
 # -v ${code_directory_host}:${code_directory_container} -i -t knapenlab/nd:0.0.1test
 
-docker run --user neuro -i -t knapenlab/nd:0.0.1test
+# docker run --user neuro -i -t knapenlab/nd:0.0.1test
+docker run -p 8888:8888 --expose=8888 --user neuro -i -t knapenlab/nd:0.0.1test
+
+# then start jupyter lab in docker
+jupyter lab --ip 0.0.0.0 --no-browser
+# and access from outside
 
 ## to upload
 docker push knapenlab/nd:0.0.1test
