@@ -19,7 +19,21 @@ generate -b centos:7 -p yum \
 --run="echo 'source activate neuro' >> /home/neuro/.bashrc" \
 --workdir /home/neuro > Dockerfile
 
-docker build . -t knapenlab/nd:0.0.1test
+# to build the just-created docker file
+docker build . -t knapenlab/nd:0.0.2test
+
+## to upload to docker
+docker push knapenlab/nd:0.0.2test
+
+# to convert to singularity
+docker run \
+-v /var/run/docker.sock:/var/run/docker.sock \
+-v /home/shared/software/knapenlab/kl-0.0.2test:/output \
+--privileged -t --rm \
+singularityware/docker2singularity \
+knapenlab/nd:0.0.2test
+
+
 
 #####################################################################
 ## run docker image, with mounted volumes on host
@@ -34,8 +48,14 @@ code_directory_container="/home/neuro/projects/MB_PRF_7T/"
 
 portnr=8888
 
+# as docker image
 docker run -p ${portnr}:${portnr} --expose=${portnr} -v ${data_directory_host}:${data_directory_container} \
--v ${code_directory_host}:${code_directory_container}--user neuro -i -t knapenlab/nd:0.0.1test
+-v ${code_directory_host}:${code_directory_container} --user neuro -i -t knapenlab/nd:0.0.1test
+
+# as singularity image
+# not working yet, needs to start the jupyter lab thing and port mapping 
+PYTHONPATH="" singularity run --bind /home/shared --bind /home/raw_data/ /home/shared/software/knapenlab/kl-0.0.2test 
+
 
 # then start jupyter lab in docker
 jupyter lab --ip 0.0.0.0 --no-browser
@@ -44,7 +64,6 @@ jupyter lab --ip 0.0.0.0 --no-browser
 # and access from outside
 # using a ssh pipe from your own computer to the server
 portnr=8888
-ssh -N -f -L localhost:${portnr}:localhost:${portnr} knapen@aeneas.labs.vu.nl
+ssh -N -f -L localhost:${portnr}:localhost:${portnr} $USER@aeneas.labs.vu.nl
 
-## to upload
-docker push knapenlab/nd:0.0.1test
+

@@ -5,7 +5,7 @@
 # pull request on our GitHub repository:
 #     https://github.com/kaczmarj/neurodocker
 #
-# Timestamp: 2018-02-19 13:22:52
+# Timestamp: 2018-04-12 15:02:46
 
 FROM centos:7
 
@@ -38,6 +38,7 @@ RUN mkdir /data && chmod 777 /data && chmod a+s /data
 RUN yum install -y -q git \
                       gcc \
                       g++ \
+                      inkscape \
     && yum clean packages \
     && rm -rf /var/cache/yum/* /tmp/* /var/tmp/*
 
@@ -140,6 +141,9 @@ RUN conda env create -q --name neuro --file /tmp/environment.yml \
 RUN source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout glrework-merged && python setup.py install
 
 # User-defined instruction
+RUN source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install
+
+# User-defined instruction
 RUN echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile
 
 # Create new user: neuro
@@ -175,7 +179,8 @@ RUN echo '{ \
     \n      [ \
     \n        "git", \
     \n        "gcc", \
-    \n        "g++" \
+    \n        "g++", \
+    \n        "inkscape" \
     \n      ] \
     \n    ], \
     \n    [ \
@@ -194,7 +199,7 @@ RUN echo '{ \
     \n      "freesurfer", \
     \n      { \
     \n        "version": "6.0.1", \
-    \n        "license_path": "license" \
+    \n        "license_path": "freesurfer_license.txt" \
     \n      } \
     \n    ], \
     \n    [ \
@@ -207,12 +212,16 @@ RUN echo '{ \
     \n      "miniconda", \
     \n      { \
     \n        "env_name": "neuro", \
-    \n        "yaml_file": "py36.yml" \
+    \n        "yaml_file": "py_envs/py36.yml" \
     \n      } \
     \n    ], \
     \n    [ \
     \n      "run", \
     \n      "source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout glrework-merged && python setup.py install" \
+    \n    ], \
+    \n    [ \
+    \n      "run", \
+    \n      "source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
     \n    ], \
     \n    [ \
     \n      "run", \
@@ -231,6 +240,6 @@ RUN echo '{ \
     \n      "/home/neuro" \
     \n    ] \
     \n  ], \
-    \n  "generation_timestamp": "2018-02-19 13:22:52", \
+    \n  "generation_timestamp": "2018-04-12 15:02:46", \
     \n  "neurodocker_version": "0.3.2-7-g4b0f32d" \
     \n}' > /neurodocker/neurodocker_specs.json
