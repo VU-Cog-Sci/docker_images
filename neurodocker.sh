@@ -32,15 +32,19 @@ data_directory_container="/data/nPRF_all/"
 code_directory_host="$HOME/projects/MB_PRF_7T/"
 code_directory_container="/home/neuro/projects/MB_PRF_7T/"
 
-# docker run -v ${data_directory_host}:${data_directory_container} \
-# -v ${code_directory_host}:${code_directory_container} -i -t knapenlab/nd:0.0.1test
+portnr=8888
 
-# docker run --user neuro -i -t knapenlab/nd:0.0.1test
-docker run -p 8888:8888 --expose=8888 --user neuro -i -t knapenlab/nd:0.0.1test
+docker run -p ${portnr}:${portnr} --expose=${portnr} -v ${data_directory_host}:${data_directory_container} \
+-v ${code_directory_host}:${code_directory_container}--user neuro -i -t knapenlab/nd:0.0.1test
 
 # then start jupyter lab in docker
 jupyter lab --ip 0.0.0.0 --no-browser
+
+
 # and access from outside
+# using a ssh pipe from your own computer to the server
+portnr=8888
+ssh -N -f -L localhost:${portnr}:localhost:${portnr} knapen@aeneas.labs.vu.nl
 
 ## to upload
 docker push knapenlab/nd:0.0.1test

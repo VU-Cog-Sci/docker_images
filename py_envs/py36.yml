@@ -78,10 +78,10 @@ dependencies:
 - jinja2=2.9.6=py36_intel_0
 - jpeg=9b=intel_0
 - jsonschema=2.6.0=py36_intel_0
-- jupyter=1.0.0=py36_intel_5
-- jupyter_client=5.1.0=py36_intel_0
-- jupyter_console=5.1.0=py36_intel_0
-- jupyter_core=4.3.0=py36_intel_1
+- jupyter
+- jupyter_client
+- jupyter_console
+- jupyter_core
 - leveldb=1.20=intel_0
 - libffi=3.2.1=intel_4
 - libpng=1.6.32=intel_0
@@ -172,19 +172,15 @@ dependencies:
 - zeromq=4.2.2=intel_0
 - zlib=1.2.11=intel_3
 - pymc3
+- jupyterlab
+- nb_conda
 - pip:
   - backports.shutil-get-terminal-size==1.0.0
   - backports.weakref==1.0.post1
-  - hrf-estimation==1.1
   - ipython-genutils==0.2.0
-  - jupyter-client==5.1.0
-  - jupyter-console==5.1.0
-  - jupyter-core==4.3.0
-  - jupyterlab-launcher==0.10.4
-  - mkl-random==1.0.0
-  - nistats==0.0.1a0
   - prompt-toolkit==1.0.15
   - tables==3.4.2
+  - hrf-estimation
   - sharedmem
   - popeye
   - mne
@@ -192,5 +188,7 @@ dependencies:
   - hedfpy
   - pyvttbl
   - hddm
+  - nistats
+  - mkl-random
 prefix: /home/knapen/software/miniconda3/envs/py36
 
