@@ -12,8 +12,6 @@ dependencies:
 - geos=3.6.2=1
 - isodate=0.6.0=py_0
 - joblib=0.11=py36_0
-- jupyterlab=0.31.8=py36_1
-- jupyterlab_launcher=0.10.4=py36_0
 - keepalive=0.5=py36_0
 - libxslt=1.1.29=4
 - lxml=4.1.1=py36_0
@@ -78,10 +76,6 @@ dependencies:
 - jinja2=2.9.6=py36_intel_0
 - jpeg=9b=intel_0
 - jsonschema=2.6.0=py36_intel_0
-- jupyter
-- jupyter_client
-- jupyter_console
-- jupyter_core
 - leveldb=1.20=intel_0
 - libffi=3.2.1=intel_4
 - libpng=1.6.32=intel_0
@@ -172,8 +166,15 @@ dependencies:
 - zeromq=4.2.2=intel_0
 - zlib=1.2.11=intel_3
 - pymc3
-- jupyterlab
 - nb_conda
+- bokeh
+- plotly
+- jupyter
+- jupyter_client
+- jupyter_console
+- jupyter_core
+- jupyterlab
+- jupyterlab_launcher
 - pip:
   - backports.shutil-get-terminal-size==1.0.0
   - backports.weakref==1.0.post1
@@ -186,7 +187,6 @@ dependencies:
   - mne
   - fir
   - hedfpy
-  - pyvttbl
   - hddm
   - nistats
   - mkl-random
