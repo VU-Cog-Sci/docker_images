@@ -1,3 +1,5 @@
+version=0.0.3test
+
 #####################################################################
 ## create docker image, with installations
 #####################################################################
@@ -20,18 +22,18 @@ generate -b centos:7 -p yum \
 --workdir /home/neuro > Dockerfile
 
 # to build the just-created docker file
-docker build . -t knapenlab/nd:0.0.2test
+docker build . -t knapenlab/nd:${version}
 
 ## to upload to docker
-docker push knapenlab/nd:0.0.2test
+docker push knapenlab/nd:${version}
 
 # to convert to singularity
 docker run \
 -v /var/run/docker.sock:/var/run/docker.sock \
--v /home/shared/software/knapenlab/kl-0.0.2test:/output \
+-v /home/shared/software/knapenlab/kl-${version}:/output \
 --privileged -t --rm \
 singularityware/docker2singularity \
-knapenlab/nd:0.0.2test
+knapenlab/${version}
 
 
 
@@ -39,22 +41,35 @@ knapenlab/nd:0.0.2test
 ## run docker image, with mounted volumes on host
 ## 				!!!!UNTESTED!!!!!
 #####################################################################
+# # "nPRF_all/derivatives/pp/"
 
-data_directory_host="/home/shared/2017/visual/nPRF_all/derivatives/pp/"
-data_directory_container="/data/nPRF_all/"
+# data_directory_host="/home/shared/2017/visual/npRF_all/derivatives/pp/"
+data_directory_host="/data/projects/npRF_all"
+data_directory_container="/data/project/"
 
-code_directory_host="$HOME/projects/MB_PRF_7T/"
-code_directory_container="/home/neuro/projects/MB_PRF_7T/"
+code_directory_host="$HOME/projects/PRF_7T/"
+code_directory_container="/home/neuro/projects/code/"
 
 portnr=8888
 
 # as docker image
+# docker run -p ${portnr}:${portnr} --expose=${portnr} -v ${data_directory_host}:${data_directory_container} \
+# -v ${code_directory_host}:${code_directory_container} --user neuro -i -t knapenlab/nd:0.0.1test
+
+# this one creates files as the present user (not root).
+# could replace $(id -g) with 'data', as that would probably work for /home/shared on aeneas.
+
+# use the group id of the present user
+GID=1005
+# use the group id of the 'data' group on aeneas
+GID=1005
+
 docker run -p ${portnr}:${portnr} --expose=${portnr} -v ${data_directory_host}:${data_directory_container} \
--v ${code_directory_host}:${code_directory_container} --user neuro -i -t knapenlab/nd:0.0.1test
+-v ${code_directory_host}:${code_directory_container} -u $(id -u):$GID -i -t knapenlab/nd:${version}
 
 # as singularity image
 # not working yet, needs to start the jupyter lab thing and port mapping 
-PYTHONPATH="" singularity run --bind /home/shared --bind /home/raw_data/ /home/shared/software/knapenlab/kl-0.0.2test 
+# PYTHONPATH="" singularity run --bind /home/shared --bind /home/raw_data/ /home/shared/software/knapenlab/kl-0.0.2test 
 
 
 # then start jupyter lab in docker
