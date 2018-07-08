@@ -1,0 +1,31 @@
+
+name: jupyterhub-tutorial
+channels:
+  - intel
+  - conda-forge
+dependencies:
+  - python = 3.6
+  - sqlalchemy 
+  - tornado 
+  - jinja2 
+  - traitlets 
+  - requests 
+  - pip 
+  - pycurl
+  - nodejs 
+  - configurable-http-proxy
+  - jupyterhub
+  - notebook
+  - ipykernel
+  - jupyterlab
+  - nbgrader
+  - nibabel
+  - nilearn
+  - nipype
+  - jupyterhub-ldapauthenticator 
+  - jupyterhub-dockerspawner 
+  - pip:
+    - oauthenticator
+    - ldapauthenticator
+    - dockerspawner
+    - netifaces
