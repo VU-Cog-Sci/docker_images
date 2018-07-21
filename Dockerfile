@@ -5,7 +5,7 @@
 # pull request on our GitHub repository:
 #     https://github.com/kaczmarj/neurodocker
 #
-# Timestamp: 2018-06-17 05:29:19
+# Timestamp: 2018-07-21 12:41:50
 
 FROM centos:7
 
@@ -133,7 +133,7 @@ RUN echo "Downloading Miniconda installer ..." \
 #-------------------------
 # Create conda environment
 #-------------------------
-COPY ["py_envs/py36.yml", "/tmp/environment.yml"]
+COPY ["py_envs/py36_nov.yml", "/tmp/environment.yml"]
 RUN conda env create -q --name neuro --file /tmp/environment.yml \
     && rm -f /tmp/environment.yml
 
@@ -142,6 +142,12 @@ RUN source activate neuro && git clone https://github.com/gallantlab/pycortex.gi
 
 # User-defined instruction
 RUN source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install
+
+# User-defined instruction
+RUN source activate neuro && git clone https://github.com/spinoza-centre/spynoza.git && cd pydeface && python setup.py install
+
+# User-defined instruction
+RUN source activate neuro && git clone https://github.com/VU-Cog-Sci/nideconv.git && cd pydeface && python setup.py install
 
 # User-defined instruction
 RUN echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile
@@ -212,7 +218,7 @@ RUN echo '{ \
     \n      "miniconda", \
     \n      { \
     \n        "env_name": "neuro", \
-    \n        "yaml_file": "py_envs/py36.yml" \
+    \n        "yaml_file": "py_envs/py36_nov.yml" \
     \n      } \
     \n    ], \
     \n    [ \
@@ -222,6 +228,14 @@ RUN echo '{ \
     \n    [ \
     \n      "run", \
     \n      "source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
+    \n    ], \
+    \n    [ \
+    \n      "run", \
+    \n      "source activate neuro && git clone https://github.com/spinoza-centre/spynoza.git && cd pydeface && python setup.py install" \
+    \n    ], \
+    \n    [ \
+    \n      "run", \
+    \n      "source activate neuro && git clone https://github.com/VU-Cog-Sci/nideconv.git && cd pydeface && python setup.py install" \
     \n    ], \
     \n    [ \
     \n      "run", \
@@ -240,6 +254,6 @@ RUN echo '{ \
     \n      "/home/neuro" \
     \n    ] \
     \n  ], \
-    \n  "generation_timestamp": "2018-06-17 05:29:19", \
+    \n  "generation_timestamp": "2018-07-21 12:41:50", \
     \n  "neurodocker_version": "0.3.2-7-g4b0f32d" \
     \n}' > /neurodocker/neurodocker_specs.json

@@ -13,14 +13,16 @@ generate -b centos:7 -p yum \
 --ants version=2.2.0 \
 --freesurfer version=6.0.1 license_path=freesurfer_license.txt \
 --fsl version=5.0.10 \
---miniconda env_name=neuro yaml_file="py_envs/py36.yml" \
+--miniconda env_name=neuro yaml_file="py_envs/py36_nov.yml" \
 --run="source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout equivolume && python setup.py install" \
 --run="source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
 --run="source activate neuro && git clone https://github.com/spinoza-centre/spynoza.git && cd pydeface && python setup.py install" \
 --run="source activate neuro && git clone https://github.com/VU-Cog-Sci/nideconv.git && cd pydeface && python setup.py install" \
 --run="echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile" \
 --user=neuro \
---run="echo 'source activate neuro' >> /home/neuro/.bashrc" \
+--add-to-entrypoint "source activate neuro" \
+--copy jupyter_notebook_config.py /hoem/neuro/.jupyter/jupyter_notebook_config.py \
+--run 'jupyter lab --ip 0.0.0.0 --no-browser' \
 --workdir /home/neuro > Dockerfile
 
 # to build the just-created docker file
