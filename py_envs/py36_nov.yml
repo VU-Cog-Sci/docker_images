@@ -1,0 +1,197 @@
+name: py36
+channels:
+- intel
+- conda-forge
+- defaults
+dependencies:
+- attrs
+- bottleneck
+- click
+- funcsigs
+- future
+- geos
+- isodate
+- joblib
+- keepalive
+- libxslt
+- lxml
+- packaging
+- patsy
+- pluggy
+- prov
+- psutil
+- py
+- pydicom
+- pydotplus
+- pytest
+- rdflib
+- seaborn
+- shapely
+- simplejson
+- sparqlwrapper
+- statsmodels
+- traits
+- xvfbwrapper
+- qt
+- asn1crypto
+- backports
+- bleach
+- boost
+- bzip2
+- caffe
+- certifi
+- cffi
+- chardet
+- cryptography
+- cycler
+- cython
+- daal
+- decorator
+- distarray
+- entrypoints
+- fontconfig
+- freetype
+- get_terminal_size
+- gflags
+- glog
+- h5py
+- hdf5
+- html5lib
+- icc_rt
+- icu
+- idna
+- impi_rt
+- intelpython
+- intelpython3_core
+- intelpython3_full
+- ipp
+- ipykernel
+- ipyparallel
+- ipython
+- ipython_genutils
+- ipywidgets
+- jinja2
+- jpeg
+- jsonschema
+- leveldb
+- libffi
+- libpng
+- libsodium
+- libtiff
+- libxml2
+- llvmlite
+- lmdb
+- markupsafe
+- matplotlib
+- mistune
+- mkl
+- mkl-dnn
+- mkl_fft
+- mkl_random
+- mlsl
+- mock
+- mpi4py
+- mpmath
+- nbconvert
+- nbformat
+- networkx
+- nose
+- notebook
+- numba
+- numexpr
+- numpy
+- olefile
+- opencv
+- openmp
+- openssl
+- pandas
+- pandocfilters
+- path.py
+- pbr
+- pexpect
+- pickleshare
+- pillow
+- pip
+- pixman
+- portpicker
+- prompt_toolkit
+- protobuf
+- ptyprocess
+- pycparser
+- pydaal
+- pygments
+- pyopenssl
+- pyparsing
+- pysocks
+- pytables
+- python
+- python-dateutil
+- python-gflags
+- python-leveldb
+- pytz
+- pywavelets
+- pyyaml
+- pyzmq
+- requests
+- scikit-image
+- scikit-learn
+- scipy
+- setuptools
+- simplegeneric
+- six
+- snappy
+- sqlite
+- sympy
+- tbb
+- tcl
+- tensorflow
+- terminado
+- testpath
+- theano
+- tk
+- tornado
+- traitlets
+- urllib3
+- wcwidth
+- weakref
+- webencodings
+- werkzeug
+- wheel
+- widgetsnbextension
+- xz
+- yaml
+- zeromq
+- zlib
+- pymc3
+- nb_conda
+- bokeh
+- plotly
+- jupyter
+- jupyter_client
+- jupyter_console
+- jupyter_core
+- jupyterlab
+- jupyterlab_launcher
+- pip:
+  - backports.shutil-get-terminal-size
+  - backports.weakref
+  - ipython-genutils
+  - prompt-toolkit
+  - tables
+  - hrf-estimation
+  - sharedmem
+  - popeye
+  - mne
+  - fir
+  - hedfpy
+  - hddm
+  - nistats
+  - mkl-random
+  - pybids
+  - fmriprep
+  - nibabel
+  - nilearn
+  - nipype
+  - mriqc
+prefix: /home/knapen/software/miniconda3/envs/py36
+

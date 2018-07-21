@@ -15,9 +15,6 @@ dependencies:
 - keepalive=0.5=py36_0
 - libxslt=1.1.29=4
 - lxml=4.1.1=py36_0
-- nibabel=2.2.1=py36_0
-- nilearn=0.4.0=py_0
-- nipype=1.0.0=py36_1
 - packaging=16.8=py36_0
 - patsy=0.5.0=py36_0
 - pluggy=0.6.0=py_0
@@ -190,5 +187,11 @@ dependencies:
   - hddm
   - nistats
   - mkl-random
+  - pybids
+  - fmriprep
+  - nibabel
+  - nilearn
+  - nipype
+  - mriqc
 prefix: /home/knapen/software/miniconda3/envs/py36
 

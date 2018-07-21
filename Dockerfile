@@ -5,7 +5,7 @@
 # pull request on our GitHub repository:
 #     https://github.com/kaczmarj/neurodocker
 #
-# Timestamp: 2018-04-13 12:30:42
+# Timestamp: 2018-06-17 05:29:19
 
 FROM centos:7
 
@@ -138,7 +138,7 @@ RUN conda env create -q --name neuro --file /tmp/environment.yml \
     && rm -f /tmp/environment.yml
 
 # User-defined instruction
-RUN source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout glrework-merged && python setup.py install
+RUN source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout equivolume && python setup.py install
 
 # User-defined instruction
 RUN source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install
@@ -217,7 +217,7 @@ RUN echo '{ \
     \n    ], \
     \n    [ \
     \n      "run", \
-    \n      "source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout glrework-merged && python setup.py install" \
+    \n      "source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout equivolume && python setup.py install" \
     \n    ], \
     \n    [ \
     \n      "run", \
@@ -240,6 +240,6 @@ RUN echo '{ \
     \n      "/home/neuro" \
     \n    ] \
     \n  ], \
-    \n  "generation_timestamp": "2018-04-13 12:30:42", \
+    \n  "generation_timestamp": "2018-06-17 05:29:19", \
     \n  "neurodocker_version": "0.3.2-7-g4b0f32d" \
     \n}' > /neurodocker/neurodocker_specs.json
