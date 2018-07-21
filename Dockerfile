@@ -5,7 +5,7 @@
 # pull request on our GitHub repository:
 #     https://github.com/kaczmarj/neurodocker
 #
-# Timestamp: 2018-07-21 12:41:50
+# Timestamp: 2018-07-21 14:06:02
 
 FROM centos:7
 
@@ -135,7 +135,8 @@ RUN echo "Downloading Miniconda installer ..." \
 #-------------------------
 COPY ["py_envs/py36_nov.yml", "/tmp/environment.yml"]
 RUN conda env create -q --name neuro --file /tmp/environment.yml \
-    && rm -f /tmp/environment.yml
+    && rm -f /tmp/environment.yml \
+    && sed -i '$isource activate neuro' $ND_ENTRYPOINT
 
 # User-defined instruction
 RUN source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout equivolume && python setup.py install
@@ -156,8 +157,10 @@ RUN echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/us
 RUN useradd --no-user-group --create-home --shell /bin/bash neuro
 USER neuro
 
-# User-defined instruction
-RUN echo 'source activate neuro' >> /home/neuro/.bashrc
+COPY ["jupyter_notebook_config.py", "/home/neuro/.jupyter/jupyter_notebook_config.py"]
+
+# Add command(s) to entrypoint
+RUN sed -i '$ijupyter lab --ip 0.0.0.0 --no-browser' $ND_ENTRYPOINT
 
 WORKDIR /home/neuro
 
@@ -218,7 +221,8 @@ RUN echo '{ \
     \n      "miniconda", \
     \n      { \
     \n        "env_name": "neuro", \
-    \n        "yaml_file": "py_envs/py36_nov.yml" \
+    \n        "yaml_file": "py_envs/py36_nov.yml", \
+    \n        "activate": true \
     \n      } \
     \n    ], \
     \n    [ \
@@ -246,14 +250,23 @@ RUN echo '{ \
     \n      "neuro" \
     \n    ], \
     \n    [ \
-    \n      "run", \
-    \n      "echo '"'"'source activate neuro'"'"' >> /home/neuro/.bashrc" \
+    \n      "copy", \
+    \n      [ \
+    \n        "jupyter_notebook_config.py", \
+    \n        "/home/neuro/.jupyter/jupyter_notebook_config.py" \
+    \n      ] \
+    \n    ], \
+    \n    [ \
+    \n      "add_to_entrypoint", \
+    \n      [ \
+    \n        "jupyter lab --ip 0.0.0.0 --no-browser" \
+    \n      ] \
     \n    ], \
     \n    [ \
     \n      "workdir", \
     \n      "/home/neuro" \
     \n    ] \
     \n  ], \
-    \n  "generation_timestamp": "2018-07-21 12:41:50", \
+    \n  "generation_timestamp": "2018-07-21 14:06:02", \
     \n  "neurodocker_version": "0.3.2-7-g4b0f32d" \
     \n}' > /neurodocker/neurodocker_specs.json
