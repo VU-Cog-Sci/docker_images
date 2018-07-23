@@ -1,28 +1,37 @@
-version=0.0.7nvtest
+version=0.0.8nvtest
 
 #####################################################################
 ## create docker image, with installations
 #####################################################################
 
 docker run --rm kaczmarj/neurodocker:master \
-generate -b centos:7 -p yum \
+generate docker --base debian:stretch --pkg-manager apt \
 --user=root \
 --run 'mkdir /data && chmod 777 /data && chmod a+s /data' \
---install git gcc g++ inkscape  \
---afni version=latest \
+--install git gcc g++ gfortran inkscape \
+--afni version=latest method=binaries \
 --ants version=2.2.0 \
 --freesurfer version=6.0.1 license_path=freesurfer_license.txt \
---fsl version=5.0.10 \
---miniconda env_name=neuro yaml_file="py_envs/py36_nov.yml" activate=true \
---run="source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout equivolume && python setup.py install" \
---run="source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
---run="source activate neuro && git clone https://github.com/spinoza-centre/spynoza.git && cd pydeface && python setup.py install" \
---run="source activate neuro && git clone https://github.com/VU-Cog-Sci/nideconv.git && cd pydeface && python setup.py install" \
---run="echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile" \
+--fsl version=5.0.11 \
+--dcm2niix version=latest method=source \
+--copy py_envs/py36_nov.yml /tmp/environment.yml \
+--miniconda create_env=neuro yaml_file="/tmp/environment.yml" activate=true \
 --user=neuro \
 --copy jupyter_notebook_config.py /home/neuro/.jupyter/jupyter_notebook_config.py \
---add-to-entrypoint "jupyter lab --ip 0.0.0.0 --no-browser" \
+--add-to-entrypoint "source activate neuro" \
+--add-to-entrypoint "jupyter lab --ip 0.0.0.0 --no-browser --config=/home/neuro/.jupyter/jupyter_notebook_config.py" \
 --workdir /home/neuro > Dockerfile
+
+
+# options not used
+# --copy jupyter_notebook_config.py /home/neuro/.jupyter/jupyter_notebook_config.py \
+# --run="source activate neuro && git clone https://github.com/gallantlab/pycortex.git && cd pycortex && git checkout equivolume && python setup.py install" \
+# --run="source activate neuro && git clone https://github.com/poldracklab/pydeface.git && cd pydeface && python setup.py install" \
+# --run="source activate neuro && git clone https://github.com/spinoza-centre/spynoza.git && cd spynoza && python setup.py install" \
+# --run="source activate neuro && git clone https://github.com/VU-Cog-Sci/nideconv.git && cd nideconv && python setup.py install" \
+# --run="echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile" \
+
+
 
 # to build the just-created docker file
 docker build . -t knapenlab/nd:${version}
@@ -36,13 +45,12 @@ docker run \
 -v /home/shared/software/knapenlab/kl-${version}:/output \
 --privileged -t --rm \
 singularityware/docker2singularity \
-knapenlab/${version}
+knapenlab/nd:${version}
 
 
 
 #####################################################################
 ## run docker image, with mounted volumes on host
-## 				!!!!UNTESTED!!!!!
 #####################################################################
 # # "nPRF_all/derivatives/pp/"
 

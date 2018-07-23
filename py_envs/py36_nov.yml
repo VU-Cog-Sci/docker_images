@@ -1,4 +1,4 @@
-name: py36
+name: neuro
 channels:
 - intel
 - conda-forge
@@ -13,6 +13,7 @@ dependencies:
 - isodate
 - joblib
 - keepalive
+- libiconv
 - libxslt
 - lxml
 - packaging
@@ -172,6 +173,7 @@ dependencies:
 - jupyter_core
 - jupyterlab
 - jupyterlab_launcher
+- nipype
 - pip:
   - backports.shutil-get-terminal-size
   - backports.weakref
@@ -191,7 +193,11 @@ dependencies:
   - fmriprep
   - nibabel
   - nilearn
-  - nipype
   - mriqc
-prefix: /home/knapen/software/miniconda3/envs/py36
+  - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
+  - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
+  - git+https://github.com/spinoza-centre/spynoza.git#egg=spynoza
+  - git+https://github.com/VU-Cog-Sci/nideconv.git#egg=nideconv
+  - git+https://github.com/Gilles86/pymp2rage.git#egg=pymp2rage
+prefix: /opt/miniconda-latest/envs/neuro
 
