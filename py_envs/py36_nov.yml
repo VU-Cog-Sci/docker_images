@@ -1,7 +1,7 @@
 name: neuro
 channels:
-- intel
 - conda-forge
+- intel
 - defaults
 dependencies:
 - attrs
