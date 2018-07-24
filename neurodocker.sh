@@ -61,7 +61,8 @@ data_directory_container="/data/project/"
 code_directory_host="$HOME/projects/PRF_7T/"
 code_directory_container="/home/neuro/projects/code/"
 
-portnr=8888
+external_portnr=8888
+internal_portnr=8888
 
 # as docker image
 # docker run -p ${portnr}:${portnr} --expose=${portnr} -v ${data_directory_host}:${data_directory_container} \
@@ -75,7 +76,7 @@ GID=1005
 # use the group id of the 'data' group on aeneas
 GID=1005
 
-docker run -p ${portnr}:${portnr} --expose=${portnr} -v ${data_directory_host}:${data_directory_container} \
+docker run -p ${external_portnr}:${internal_portnr} --expose=${external_portnr} -v ${data_directory_host}:${data_directory_container} \
 -v ${code_directory_host}:${code_directory_container} -u $(id -u):$GID -i -t knapenlab/nd:${version}
 
 # as singularity image
