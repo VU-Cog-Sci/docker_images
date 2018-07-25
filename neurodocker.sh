@@ -1,4 +1,4 @@
-version=0.0.8nvtest
+version=0.0.9nvtest
 
 #####################################################################
 ## create docker image, with installations
