@@ -94,7 +94,7 @@ docker run -p ${external_portnr}:${internal_portnr} --expose=${external_portnr} 
 
 
 #####################################################################
-### and access from outside
+### and access from outside - the following to be run from laptop
 ### for instance, using a ssh pipe from your own computer to the server
 #####################################################################
 external_portnr=8888
