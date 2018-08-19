@@ -82,7 +82,7 @@ GID=1005
 #####################################################################
 
 docker run -p ${external_portnr}:${internal_portnr} --expose=${external_portnr} -v ${data_directory_host}:${data_directory_container} \
--v ${code_directory_host}:${code_directory_container} -u $(id -u):$GID -i -t knapenlab/nd:${version}
+-v ${code_directory_host}:${code_directory_container} -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -u=$UID:$(id -g $USER) -i -t knapenlab/nd:${version}
 
 
 #####################################################################
