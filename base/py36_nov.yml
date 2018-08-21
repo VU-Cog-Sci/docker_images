@@ -1,7 +1,7 @@
 name: neuro
 channels:
-- conda-forge
 - intel
+- conda-forge
 - defaults
 dependencies:
 - attrs
@@ -195,6 +195,8 @@ dependencies:
   - nibabel
   - nilearn
   - mriqc
+  - glances
+  - graphviz
   - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
   - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
   - git+https://github.com/spinoza-centre/spynoza.git#egg=spynoza

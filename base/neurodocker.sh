@@ -1,4 +1,4 @@
-version=0.0.9nvtest
+version=0.0.10nvtest
 
 #####################################################################
 ## create docker image, with installations
@@ -14,14 +14,14 @@ generate docker --base debian:stretch --pkg-manager apt \
 --freesurfer version=6.0.1 license_path=../licenses/freesurfer_license.txt \
 --fsl version=5.0.11 \
 --dcm2niix version=latest method=source \
---copy ../py_envs/py36_nov.yml /tmp/environment.yml \
+--copy py36_nov.yml /tmp/environment.yml \
 --miniconda create_env=neuro yaml_file="/tmp/environment.yml" activate=true \
---user=neuro \
---copy ../config/jupyter_notebook_config.py /home/neuro/.jupyter/jupyter_notebook_config.py \
+--copy jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py \
 --add-to-entrypoint "source activate neuro" \
---add-to-entrypoint "jupyter lab --ip 0.0.0.0 --no-browser --config=/home/neuro/.jupyter/jupyter_notebook_config.py" \
---workdir /home/neuro > Dockerfile
+--add-to-entrypoint "jupyter lab --ip 0.0.0.0 --no-browser --config=/etc/jupyter/jupyter_notebook_config.py" \
+--workdir /data > Dockerfile
 
+# --user=neuro \
 
 # options not used
 # --copy jupyter_notebook_config.py /home/neuro/.jupyter/jupyter_notebook_config.py \
@@ -66,7 +66,7 @@ data_directory_host="/data/projects/myproject"
 data_directory_container="/data/project/"
 
 code_directory_host="$HOME/projects/mycode/"
-code_directory_container="/home/neuro/projects/code/"
+code_directory_container="/data/code/"
 
 external_portnr=8888
 internal_portnr=8888
