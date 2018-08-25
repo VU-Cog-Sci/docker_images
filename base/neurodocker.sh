@@ -1,4 +1,4 @@
-version=0.0.10nvtest
+version=0.0.10gillesdev
 
 #####################################################################
 ## create docker image, with installations
@@ -14,6 +14,8 @@ generate docker --base debian:stretch --pkg-manager apt \
 --freesurfer version=6.0.1 license_path=../licenses/freesurfer_license.txt \
 --fsl version=5.0.11 \
 --dcm2niix version=latest method=source \
+--neurodebian os_codename=stretch server=germany-munich \
+--convert3d version=1.0.0 \
 --copy py36_nov.yml /tmp/environment.yml \
 --miniconda create_env=neuro yaml_file="/tmp/environment.yml" activate=true \
 --copy jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py \
