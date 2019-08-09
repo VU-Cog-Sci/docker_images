@@ -34,7 +34,24 @@ generate docker --base debian:stretch --pkg-manager apt \
 # --run="source activate neuro && git clone https://github.com/VU-Cog-Sci/nideconv.git && cd nideconv && python setup.py install" \
 # --run="echo 'export PATH=/opt/conda/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/lib/x86_64-linux-gnu' >> /etc/profile" \
 
-
+neurodocker generate docker \
+--base debian:stretch --pkg-manager apt \
+--user=root \
+--run 'mkdir /data && chmod 777 /data && chmod a+s /data' \
+--install git gcc g++ gfortran inkscape nano \
+--afni version=latest method=binaries \
+--ants version=2.2.0 method=binaries \
+--freesurfer version=6.0.1 license_path=license.txt \
+--fsl version=5.0.11  method=binaries \
+--convert3d version=1.0.0 method=binaries \
+--dcm2niix version=latest method=source \
+--matlabmcr version=2012b method=binaries \
+--copy py36_nov.yml /tmp/environment.yml \
+--miniconda create_env=neuro yaml_file="/tmp/environment.yml" activate=true version=latest \
+--copy jupyter_notebook_config.py /etc/jupyter/jupyter_notebook_config.py \
+--add-to-entrypoint "source activate neuro" \
+--neurodebian os_codename=stretch server=usa-nh --install connectome-workbench \
+--workdir /data > Dockerfile
 
 #####################################################################
 ### to build the just-created docker file
