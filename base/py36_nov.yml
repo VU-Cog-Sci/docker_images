@@ -2,8 +2,9 @@ name: neuro
 channels:
 - intel
 - conda-forge
+- defaults
 dependencies:
-- intelpython3_full
+- intelpython3_full=2019.4
 - pip
 - attrs
 - bottleneck
@@ -32,7 +33,7 @@ dependencies:
 - simplejson
 - sparqlwrapper
 - statsmodels
-- traits
+- nipype
 - xvfbwrapper
 - boost
 - bzip2
@@ -62,7 +63,7 @@ dependencies:
 - pywavelets
 - scikit-image
 - snappy
-- tensorflow-gpu
+- tensorflow
 - tornado
 - pymc3
 - nb_conda
@@ -70,6 +71,9 @@ dependencies:
 - plotly
 - jupyterlab
 - pytables
+- graphviz
+- nilearn
+- nibabel
 - pip:
   - backports.shutil-get-terminal-size
   - backports.weakref
@@ -85,12 +89,8 @@ dependencies:
   - mkl-random
   - pybids
   - fmriprep
-  - nibabel
-  - nilearn
   - mriqc
   - glances
-  - graphviz
-  - nipype
   - cifti
   - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
   - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
