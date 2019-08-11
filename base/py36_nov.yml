@@ -5,6 +5,7 @@ channels:
 - defaults
 dependencies:
 - intelpython3_full
+- pip
 - attrs
 - bottleneck
 - click
@@ -91,6 +92,7 @@ dependencies:
   - glances
   - graphviz
   - nipype
+  - cifti
   - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
   - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
   - git+https://github.com/spinoza-centre/spynoza.git#egg=spynoza
