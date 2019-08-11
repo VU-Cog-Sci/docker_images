@@ -4,7 +4,7 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- intelpython3_full
+- intelpython3_full=2019.4
 - pip
 - bottleneck
 - joblib
@@ -55,4 +55,4 @@ dependencies:
   - git+https://github.com/spinoza-centre/spynoza.git#egg=spynoza
   - git+https://github.com/VU-Cog-Sci/nideconv.git#egg=nideconv
   - git+https://github.com/Gilles86/pymp2rage.git#egg=pymp2rage
-  # - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
+  - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
