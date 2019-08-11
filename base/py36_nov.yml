@@ -4,33 +4,30 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- intelpython3_full=2019.4
+- intelpython3_full
 - pip
 - bottleneck
 - joblib
 - patsy
 - psutil
 - pydicom
-- pydotplus
 - pytest
 - seaborn
 - shapely
-- simplejson
 - statsmodels
 - nipype
 - xvfbwrapper
+- freetype
+- pyyaml
 - boost
 - bzip2
-- caffe
 - h5py
 - networkx
 - numexpr
 - opencv
 - openmp
-- pillow
 - pywavelets
 - scikit-image
-- tensorflow
 - tornado
 - pymc3
 - nb_conda
@@ -38,7 +35,6 @@ dependencies:
 - plotly
 - jupyterlab
 - pytables
-- graphviz
 - nilearn
 - nibabel
 - mne
@@ -60,5 +56,3 @@ dependencies:
   - git+https://github.com/spinoza-centre/spynoza.git#egg=spynoza
   - git+https://github.com/VU-Cog-Sci/nideconv.git#egg=nideconv
   - git+https://github.com/Gilles86/pymp2rage.git#egg=pymp2rage
-prefix: /opt/miniconda-latest/envs/neuro
-
