@@ -37,8 +37,8 @@ dependencies:
 - pytables
 - nilearn
 - nibabel
-- mne
 - pip:
+  - mne
   - hrf-estimation
   - sharedmem
   - popeye
