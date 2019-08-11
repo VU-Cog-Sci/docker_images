@@ -4,7 +4,7 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- intelpython3_full=2019.4
+- intelpython3_full=2019.2
 - pip
 - bottleneck
 - joblib
@@ -38,6 +38,7 @@ dependencies:
 - nilearn
 - nibabel
 - pip:
+  - pingouin
   - mne
   - hrf-estimation
   - sharedmem
