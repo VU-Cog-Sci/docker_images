@@ -18,7 +18,7 @@ dependencies:
 - networkx
 - pywavelets
 - tornado
-- pymc3
+# - pymc3
 - nb_conda
 - bokeh
 - plotly
@@ -40,7 +40,7 @@ dependencies:
   - popeye
   - fir
   - hedfpy
-  - hddm
+  # - hddm
   - nistats
   - pybids
   - fmriprep
