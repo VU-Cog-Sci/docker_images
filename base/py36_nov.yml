@@ -19,7 +19,6 @@ dependencies:
 - bzip2
 - h5py
 - networkx
-- opencv
 - openmp
 - pywavelets
 - scikit-image
