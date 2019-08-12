@@ -5,7 +5,6 @@ channels:
 - defaults
 dependencies:
 - intelpython3_full=2019.4
-- pip
 - joblib
 - psutil
 - pytest
@@ -25,6 +24,7 @@ dependencies:
 - jupyterlab
 - pytables
 - pip:
+  - pip
   - h5py
   - scikit-image
   - patsy
@@ -40,6 +40,9 @@ dependencies:
   - popeye
   - fir
   - hedfpy
+  - pytest
+  - pytest-cov
+  - coveralls
   # - hddm
   - nistats
   - pybids
@@ -48,7 +51,7 @@ dependencies:
   - glances
   - cifti
   - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
-  - git+https://github.com/spinoza-centre/spynoza.git#egg=spynoza
+  - git+https://github.com/spinoza-centre/spynoza.git@master
   - git+https://github.com/VU-Cog-Sci/nideconv.git#egg=nideconv
   - git+https://github.com/Gilles86/pymp2rage.git#egg=pymp2rage
   - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
