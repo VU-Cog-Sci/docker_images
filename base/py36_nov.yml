@@ -7,7 +7,6 @@ dependencies:
 - intelpython3_full=2019.4
 - pip
 - joblib
-- patsy
 - psutil
 - pytest
 - seaborn
@@ -15,13 +14,9 @@ dependencies:
 - statsmodels
 - xvfbwrapper
 - pyyaml
-- boost
 - bzip2
-- h5py
 - networkx
-- openmp
 - pywavelets
-- scikit-image
 - tornado
 - pymc3
 - nb_conda
@@ -30,6 +25,9 @@ dependencies:
 - jupyterlab
 - pytables
 - pip:
+  - h5py
+  - scikit-image
+  - patsy
   - bottleneck
   - nipype
   - pydicom
