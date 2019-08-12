@@ -5,6 +5,7 @@ channels:
 - defaults
 dependencies:
 - intelpython3_full=2019.4
+- pip
 - joblib
 - psutil
 - pytest
@@ -23,13 +24,13 @@ dependencies:
 - plotly
 - jupyterlab
 - pytables
+- nipype
 - pip:
   - pip
   - h5py
   - scikit-image
   - patsy
   - bottleneck
-  - nipype
   - pydicom
   - nibabel
   - nilearn
