@@ -35,9 +35,9 @@ dependencies:
 - plotly
 - jupyterlab
 - pytables
-- nilearn
-- nibabel
 - pip:
+  - nibabel
+  - nilearn
   - pingouin
   - mne
   - hrf-estimation
