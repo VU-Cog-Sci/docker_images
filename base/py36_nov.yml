@@ -10,14 +10,11 @@ dependencies:
 - joblib
 - patsy
 - psutil
-- pydicom
 - pytest
 - seaborn
 - shapely
 - statsmodels
-- nipype
 - xvfbwrapper
-- freetype
 - pyyaml
 - boost
 - bzip2
@@ -36,6 +33,8 @@ dependencies:
 - jupyterlab
 - pytables
 - pip:
+  - nipype
+  - pydicom
   - nibabel
   - nilearn
   - pingouin
