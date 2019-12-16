@@ -1,58 +1,62 @@
-name: neuro
+name: neuro2
 channels:
-- intel
-- conda-forge
-- defaults
+  - intel
+  - conda-forge
+  - defaults
 dependencies:
-- intelpython3_full=2019.4
-- pip
-- joblib
-- psutil
-- pytest
-- seaborn
-- shapely
-- statsmodels
-- xvfbwrapper
-- pyyaml
-- bzip2
-- networkx
-- pywavelets
-- tornado
-# - pymc3
-- nb_conda
-- bokeh
-- plotly
-- jupyterlab
-- pytables
-- nipype
-- pip:
+  - intelpython3_full=2019.5
+  - scipy
   - pip
-  - h5py
-  - scikit-image
-  - patsy
-  - bottleneck
-  - pydicom
-  - nibabel
-  - nilearn
-  - pingouin
-  - mne
-  - hrf-estimation
-  - sharedmem
-  - popeye
-  - fir
-  - hedfpy
+  - joblib
+  - psutil
   - pytest
-  - pytest-cov
-  - coveralls
-  # - hddm
-  - nistats
-  - pybids
-  - fmriprep
-  - mriqc
-  - glances
-  - cifti
-  - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
-  - git+https://github.com/spinoza-centre/spynoza.git@master
-  - git+https://github.com/VU-Cog-Sci/nideconv.git#egg=nideconv
-  - git+https://github.com/Gilles86/pymp2rage.git#egg=pymp2rage
-  - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
+  - seaborn
+  - shapely
+  - statsmodels
+  - xvfbwrapper
+  - pyyaml
+  - bzip2
+  - networkx
+  - pywavelets
+  - tornado
+  # - pymc3
+  - nb_conda
+  - bokeh
+  - plotly
+  - jupyterlab
+  - pytables
+  - nipype
+  - scikit-learn
+  - bottleneck
+  - pip:
+      - pip
+      - h5py
+      - scikit-image
+      - patsy
+      - bottleneck
+      - pydicom
+      - nibabel
+      - nilearn
+      - pingouin
+      - mne
+      - hrf-estimation
+      - sharedmem
+      - popeye
+      - fir
+      - hedfpy
+      - pytest
+      - pytest-cov
+      - coveralls
+      # - hddm
+      - nistats
+      - pybids
+      - fmriprep
+      - mriqc
+      - niflow-nipype1-workflows
+      - glances
+      - cifti
+      - git+https://github.com/poldracklab/pydeface.git#egg=pydeface
+      - git+https://github.com/spinoza-centre/spynoza.git@master
+      - git+https://github.com/VU-Cog-Sci/nideconv.git#egg=nideconv
+      - git+https://github.com/Gilles86/pymp2rage.git#egg=pymp2rage
+      - git+https://github.com/gallantlab/pycortex.git#egg=pycortex
